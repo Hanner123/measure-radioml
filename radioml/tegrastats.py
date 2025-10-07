@@ -479,13 +479,13 @@ if __name__ == "__main__":
     batch_sizes = [1, 2, 4, 8, 16, 32, 64, 128, 256, 512, 1024]
 
 
-    onnx_model_path = "outputs/radioml/model_dynamic_batchsize.onnx"
+    onnx_model_path = "inputs/radioml/model_dynamic_batchsize.onnx"
 
     tegrastats_logs = []
 
     for batch_size in batch_sizes:
         if INT8:
-            onnx_model_path = f"outputs/radioml/model_brevitas_{batch_size}_simpl.onnx"
+            onnx_model_path = f"inputs/radioml/model_brevitas_{batch_size}_simpl.onnx"
         input_info, output_info = get_model_io_info(onnx_model_path)
         tegrastats_log = Path(__file__).resolve().parent.parent / "outputs" / "radioml" / "energy_metrics" / f"tegrastats_{batch_size}.log"
         timestamps = Path(__file__).resolve().parent.parent / "outputs" / "radioml" / "energy_metrics" / f"timestamps_{batch_size}.json"
