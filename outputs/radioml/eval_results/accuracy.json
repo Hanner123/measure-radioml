@@ -1,14 +1,14 @@
 [
     {
         "quantisation_type": "FP16",
-        "value": 0.0
+        "value": 0.4323
     },
     {
         "quantisation_type": "FP32",
-        "value": 0.0
+        "value": 0.4319
     },
     {
         "quantisation_type": "INT8",
-        "value": 1.0
+        "value": 0.0399
     }
 ]

@@ -154,6 +154,7 @@ def create_test_dataloader(RADIOML_PATH_NPZ, batch_size):
     data = np.load(RADIOML_PATH_NPZ)
     input_info, output_info = get_model_io_info(onnx_model_path)
     key_list = list(data.keys())
+    print("Keys in NPZ file:", key_list)
     if len(input_info) == 2:
         input_key = key_list[0]
         attention_mask_key = key_list[1]
@@ -162,16 +163,17 @@ def create_test_dataloader(RADIOML_PATH_NPZ, batch_size):
         input_key = key_list[0]
         attention_mask_key = key_list[1]
         output_key = key_list[2]
-    else:
+    else:   # nur 1 input
         input_key = key_list[0]
         attention_mask_key = None
         output_key = key_list[1]
     
     input_ids = torch.from_numpy(data[input_key])
-    # print("input_ids.shape:", input_ids.shape)
+    print("input_ids.shape:", input_ids.shape)
 
-    input_ids = input_ids.reshape(-1, 1, 1024, 2)
-    # print("input_ids.shape nach reshape:", input_ids.shape)
+    #input_ids = input_ids.reshape(-1, 1, 1024, 2)
+    input_ids = input_ids.unsqueeze(1)
+    print("input_ids.shape nach unsqueeze:", input_ids.shape)
 
 
     attention_mask = torch.from_numpy(data[attention_mask_key]) if attention_mask_key else None
@@ -408,7 +410,11 @@ def run_inference(context, test_loader, device_input, device_output, device_atte
         iterations += 1
 
         if accuracy_flag:
+            #print("Labels and Predictions:")
+            #print("Prediction (Raw): ", output)
             pred = output.argmax(axis=-1)  # [batch, seq_len]
+            #print("Prediction: ", pred)
+            #print("Ground Truth: ", yb.numpy())
             correct = (pred == yb.numpy()).sum()
             total = len(yb)
             correct_predictions += correct
