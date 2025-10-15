@@ -169,11 +169,11 @@ def create_test_dataloader(RADIOML_PATH_NPZ, batch_size):
         output_key = key_list[1]
     
     input_ids = torch.from_numpy(data[input_key])
-    print("input_ids.shape:", input_ids.shape)
+    # print("input_ids.shape:", input_ids.shape)
 
     #input_ids = input_ids.reshape(-1, 1, 1024, 2)
-    input_ids = input_ids.unsqueeze(1)
-    print("input_ids.shape nach unsqueeze:", input_ids.shape)
+    # input_ids = input_ids.unsqueeze(1)
+    # print("input_ids.shape nach unsqueeze:", input_ids.shape)
 
 
     attention_mask = torch.from_numpy(data[attention_mask_key]) if attention_mask_key else None
@@ -358,9 +358,7 @@ def run_inference(context, test_loader, device_input, device_output, device_atte
 
         input_name = input_info[0]["name"]
 
-        # print("device_input.shape =", device_input.shape)
-        
-        # print("xb.shape =", xb.shape)
+       
 
         device_input.copy_(xb.to(dtype))
         context.set_tensor_address(input_name, device_input.data_ptr())
@@ -607,3 +605,8 @@ if __name__ == "__main__":
 
 
 
+# Todo:
+# wieso ist die accuracy beim onnx modell schlechter als beim pt modell? -> mit eigenem test ist das pt modell genauso schlecht -> werden bei eval die daten vorverarbeitet? JA
+    # daten vorher vorverarbeiten, dann als npz speichern fertig, komisch: immer eine dimension zu viel, mit 1, Lösung: unsqueeze/ein mal expand weniger
+    # , dann nochmal testen
+# Pipeline bauen: soll sich der jetson dann automatisch das neue Modell ziehen und die tests durchführen und pushen?
