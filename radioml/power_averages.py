@@ -156,6 +156,11 @@ def power_averages_baseline(batch_sizes, power_averages_file, energy_consumption
 
 def power_averages_difference(batch_sizes, power_averages_file, power_averages_baseline_file, power_difference_file):
     # input logs besteht aus tegrastats_log, batch_size tuples
+    import re
+    import json
+    from datetime import datetime
+    from pathlib import Path
+    base_path = Path(__file__).resolve().parent.parent / "outputs" / "radioml" /"energy_metrics"
     # in jedem eintrag der output dateien soll als zusätzlicher key der batch_size wert stehen
         # JSON-Dateien einlesen
     with open(power_averages_file, 'r') as f:

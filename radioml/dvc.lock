@@ -1044,12 +1044,12 @@ stages:
       size: 7068
     - path: radioml/power_averages.py
       hash: md5
-      md5: a221bbf128829bd3a198c2680a50e500
-      size: 6182
+      md5: c67c66fbd59c475109b1cf61998e2df0
+      size: 8350
     - path: radioml/tegrastats.py
       hash: md5
-      md5: 21137fbbeef3d62223cffaf16d181715
-      size: 17038
+      md5: 4d9e4dda9d62044d4118e98d9f78e51b
+      size: 17262
     params:
       radioml/params.yaml:
         batch_sizes:
@@ -1067,29 +1067,33 @@ stages:
     outs:
     - path: outputs/radioml/energy_metrics/energy_consumption.json
       hash: md5
-      md5: 988441cb5212719568843ec733ab00ad
-      size: 212186
+      md5: b09a00135dcf774464c0e59a4d266cd6
+      size: 212175
     - path: outputs/radioml/energy_metrics/energy_consumption_2.json
       hash: md5
-      md5: 988441cb5212719568843ec733ab00ad
-      size: 212186
+      md5: b09a00135dcf774464c0e59a4d266cd6
+      size: 212175
     - path: outputs/radioml/energy_metrics/energy_metrics.json
       hash: md5
-      md5: 901f3bb0d68bab2dc3f5b75d6a0ca3ff
-      size: 281324
+      md5: 6ba01bd18dd1310365d07f9da1cc3c23
+      size: 281373
     - path: outputs/radioml/energy_metrics/power_averages.json
       hash: md5
-      md5: d6eb2f8702118c079654288b766c5155
-      size: 2833
+      md5: 165df4ebac432fe290d6cdbcfa1114d4
+      size: 2780
     - path: outputs/radioml/energy_metrics/power_averages_baseline.json
       hash: md5
-      md5: 6d46c8a4ea607e78ce52db63d1b74167
-      size: 2673
+      md5: 44eb50a125fa324eea8b1e0d5ed7ae93
+      size: 2793
+    - path: outputs/radioml/energy_metrics/power_averages_difference.json
+      hash: md5
+      md5: 61d6be756cc19a0f93f2fd2fa58f81b5
+      size: 2879
     - path: outputs/radioml/energy_metrics/ram_metrics.json
       hash: md5
-      md5: 3ad58c39595372c82d3bbb26d3a88804
-      size: 67701
+      md5: 21d38d970c341be2ac1cb55a7758443b
+      size: 67697
     - path: outputs/radioml/energy_metrics/ram_metrics_2.json
       hash: md5
-      md5: 3ad58c39595372c82d3bbb26d3a88804
-      size: 67701
+      md5: 21d38d970c341be2ac1cb55a7758443b
+      size: 67697

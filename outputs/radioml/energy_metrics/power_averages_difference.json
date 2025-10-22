@@ -2,52 +2,52 @@
   {
     "batch_size": 1,
     "type": "vdd_gpu_avg",
-    "value": 679.0867346938776
+    "value": 756.8742105263159
   },
   {
     "batch_size": 1,
     "type": "vdd_cpu_avg",
-    "value": 804.0714285714287
+    "value": 788.0
   },
   {
     "batch_size": 1,
     "type": "vin_sys_avg",
-    "value": 807.8989795918365
+    "value": 850.8747368421054
   },
   {
     "batch_size": 2,
     "type": "vdd_gpu_avg",
-    "value": 679.4846153846152
+    "value": 756.9668615984408
   },
   {
     "batch_size": 2,
     "type": "vdd_cpu_avg",
-    "value": 800.0
+    "value": 770.3703703703704
   },
   {
     "batch_size": 2,
     "type": "vin_sys_avg",
-    "value": 837.2923076923075
+    "value": 836.861598440546
   },
   {
     "batch_size": 4,
     "type": "vdd_gpu_avg",
-    "value": 984.9214285714284
+    "value": 973.9285714285716
   },
   {
     "batch_size": 4,
     "type": "vdd_cpu_avg",
-    "value": 771.4285714285713
+    "value": 796.3369963369964
   },
   {
     "batch_size": 4,
     "type": "vin_sys_avg",
-    "value": 780.1785714285716
+    "value": 820.6666666666665
   },
   {
     "batch_size": 8,
     "type": "vdd_gpu_avg",
-    "value": 1156.7993421052631
+    "value": 1136.4967105263158
   },
   {
     "batch_size": 8,
@@ -57,111 +57,111 @@
   {
     "batch_size": 8,
     "type": "vin_sys_avg",
-    "value": 918.0131578947367
+    "value": 879.7039473684213
   },
   {
     "batch_size": 16,
     "type": "vdd_gpu_avg",
-    "value": 1256.9780701754387
+    "value": 1359.6999999999998
   },
   {
     "batch_size": 16,
     "type": "vdd_cpu_avg",
-    "value": 366.66666666666663
+    "value": 600.0
   },
   {
     "batch_size": 16,
     "type": "vin_sys_avg",
-    "value": 897.3771929824561
+    "value": 990.1499999999996
   },
   {
     "batch_size": 32,
     "type": "vdd_gpu_avg",
-    "value": 1079.3444444444444
+    "value": 1065.3968253968255
   },
   {
     "batch_size": 32,
-    "type": "vdd_cpu_avg",
-    "value": 488.8888888888889
-  },
-  {
-    "batch_size": 32,
-    "type": "vin_sys_avg",
-    "value": 846.6611111111115
-  },
-  {
-    "batch_size": 64,
-    "type": "vdd_gpu_avg",
-    "value": 1329.1
-  },
-  {
-    "batch_size": 64,
     "type": "vdd_cpu_avg",
     "value": 400.0
   },
   {
+    "batch_size": 32,
+    "type": "vin_sys_avg",
+    "value": 865.6984126984125
+  },
+  {
+    "batch_size": 64,
+    "type": "vdd_gpu_avg",
+    "value": 1227.0760233918127
+  },
+  {
+    "batch_size": 64,
+    "type": "vdd_cpu_avg",
+    "value": 355.55555555555554
+  },
+  {
     "batch_size": 64,
     "type": "vin_sys_avg",
-    "value": 886.625
+    "value": 795.2748538011697
   },
   {
     "batch_size": 128,
     "type": "vdd_gpu_avg",
-    "value": 1457.0986842105262
+    "value": 1446.9285714285716
   },
   {
     "batch_size": 128,
     "type": "vdd_cpu_avg",
-    "value": 150.0
+    "value": 133.33333333333337
   },
   {
     "batch_size": 128,
     "type": "vin_sys_avg",
-    "value": 943.1447368421054
+    "value": 1025.6666666666665
   },
   {
     "batch_size": 256,
     "type": "vdd_gpu_avg",
-    "value": 1498.8142857142857
+    "value": 1518.9571428571426
   },
   {
     "batch_size": 256,
     "type": "vdd_cpu_avg",
-    "value": 114.28571428571433
+    "value": 0.0
   },
   {
     "batch_size": 256,
     "type": "vin_sys_avg",
-    "value": 1073.1214285714286
+    "value": 1083.1285714285714
   },
   {
     "batch_size": 512,
     "type": "vdd_gpu_avg",
-    "value": 1379.8571428571427
+    "value": 1465.8571428571427
   },
   {
     "batch_size": 512,
     "type": "vdd_cpu_avg",
-    "value": 66.66666666666669
+    "value": 0.0
   },
   {
     "batch_size": 512,
     "type": "vin_sys_avg",
-    "value": 1129.928571428571
+    "value": 1162.8095238095239
   },
   {
     "batch_size": 1024,
     "type": "vdd_gpu_avg",
-    "value": 1612.15
+    "value": 1848.280701754386
   },
   {
     "batch_size": 1024,
     "type": "vdd_cpu_avg",
-    "value": 66.66666666666669
+    "value": 133.33333333333337
   },
   {
     "batch_size": 1024,
     "type": "vin_sys_avg",
-    "value": 1266.2166666666667
+    "value": 1265.2456140350878
   }
 ]
