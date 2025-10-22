@@ -154,13 +154,65 @@ def power_averages_baseline(batch_sizes, power_averages_file, energy_consumption
 
     print(f"{len(power_averages)} Einträge in '{power_averages_file.name}' gespeichert (Durchschnittswerte).")
 
+def power_averages_difference(batch_sizes, power_averages_file, power_averages_baseline_file, power_difference_file):
+    # input logs besteht aus tegrastats_log, batch_size tuples
+    # in jedem eintrag der output dateien soll als zusätzlicher key der batch_size wert stehen
+        # JSON-Dateien einlesen
+    with open(power_averages_file, 'r') as f:
+        inference_data = json.load(f)
+
+    with open(power_averages_baseline_file, 'r') as f:
+        baseline_data = json.load(f)
+
+    # Baseline-Werte in ein Dictionary für schnellen Zugriff umwandeln
+    baseline_dict = {
+        (entry['batch_size'], entry['type']): entry['value']
+        for entry in baseline_data
+    }
+
+    # Differenzen berechnen
+    difference_data = []
+    for entry in inference_data:
+        batch_size = entry['batch_size']
+        type_ = entry['type']
+        inference_value = entry['value']
+
+        # Nur berechnen, wenn batch_size in der gewünschten Liste ist
+        if batch_size in batch_sizes:
+            baseline_value = baseline_dict.get((batch_size, type_))
+
+            if baseline_value is not None:
+                difference = inference_value - baseline_value
+                difference_data.append({
+                    "batch_size": batch_size,
+                    "type": type_,
+                    "value": difference
+                })
+            else:
+                print(f"⚠️ Kein Baseline-Wert für batch_size {batch_size} und type {type_} gefunden.")
+
+    # In die Ausgabedatei schreiben
+    with open(power_difference_file, 'w') as f:
+        json.dump(difference_data, f, indent=2)
+
+
+
 
 if __name__ == "__main__":
+    import re
+    import json
+    from datetime import datetime
+    from pathlib import Path
     base_path = Path(__file__).resolve().parent.parent / "outputs" / "radioml" /"energy_metrics"
     energy_consumption_file = base_path / "energy_consumption.json" 
     power_averages_file = base_path / "power_averages.json"
+    power_averages_baseline_file = base_path / "power_averages_baseline.json"
+    power_difference_file = base_path / "power_averages_difference.json"
 
 
     batch_sizes = [1, 2, 4, 8, 16, 32, 64, 128, 256, 512, 1024]
-    power_averages(batch_sizes, power_averages_file, energy_consumption_file)
+    difference_baseline_inference(batch_sizes, power_averages_file, power_averages_baseline_file, power_difference_file)
+
+
+    # power_averages(batch_sizes, power_averages_file, energy_consumption_file)
 

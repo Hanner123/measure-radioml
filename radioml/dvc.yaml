@@ -154,3 +154,8 @@ stages:
           x: batch_size
           y: value
           cache: false
+     - outputs/radioml/energy_metrics/power_averages_difference.json:
+          template: plot_templates/power_averages_difference.json
+          x: batch_size
+          y: value
+          cache: false

@@ -500,9 +500,11 @@ if __name__ == "__main__":
     energy_consumption_file = base_path / "energy_consumption.json" 
     power_averages_file = base_path / "power_averages.json"
     power_averages_file_baseline = base_path / "power_averages_baseline.json"
+    power_averages_difference_file = base_path / "power_averages_difference.json"
 
     power_averages.power_averages(batch_sizes, power_averages_file, energy_consumption_file)
     power_averages.power_averages_baseline(batch_sizes, power_averages_file_baseline, energy_consumption_file)
+    power_averages.power_averages_difference(batch_sizes, power_averages_file , power_averages_file_baseline, power_averages_difference_file)
     
     
 
