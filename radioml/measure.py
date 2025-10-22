@@ -561,7 +561,7 @@ if __name__ == "__main__":
 
     batch_size = 1
     accuracy = run_accuracy_eval(batch_size, input_info, output_info, RADIOML_PATH_NPZ, onnx_model_path)
-    print(f"Accuracy : {accuracy:.2%}")
+    print(f"!!!Accuracy : {accuracy:.2%}")
 
     if FP16:
         accuracy_path = Path(__file__).resolve().parent.parent / "outputs" / "radioml" / "eval_results" /"accuracy_FP16.json"
@@ -608,5 +608,36 @@ if __name__ == "__main__":
 # Todo:
 # wieso ist die accuracy beim onnx modell schlechter als beim pt modell? -> mit eigenem test ist das pt modell genauso schlecht -> werden bei eval die daten vorverarbeitet? JA
     # daten vorher vorverarbeiten, dann als npz speichern fertig, komisch: immer eine dimension zu viel, mit 1, Lösung: unsqueeze/ein mal expand weniger
-    # , dann nochmal testen
+    # , dann nochmal testen fertig
+# bei int 8 ist die accuracy auch schlechter -> aber mir onnxruntime ist sie gut (60%)
 # Pipeline bauen: soll sich der jetson dann automatisch das neue Modell ziehen und die tests durchführen und pushen?
+
+
+
+
+
+# benutzer für sciebo erstellen - geht das überhupt? Sciebo ist ja mit uni accout verknüpft
+
+# import in neues repo - funktioniert auch nicht
+# (venv) hanna@ceg-420:~/git/Empty$ dvc pull
+# Collecting                                                                                                                                                                                                                                            |0.00 [00:00,    ?entry/s]
+# Fetching
+# Building workspace index                                                                                                                                                                                                                              |0.00 [00:00,    ?entry/s]
+# Comparing indexes                                                                                                                                                                                                                                    |1.00 [00:00, 7.03kentry/s]
+# Applying changes                                                                                                                                                                                                                                      |0.00 [00:00,     ?file/s]
+# Everything is up to date.
+# (venv) hanna@ceg-420:~/git/Empty$ dvc import https://github.com/Hanner123/train-radioml.git outputs/radioml/model_brevitas_1_simpl.onnx
+# Importing 'outputs/radioml/model_brevitas_1_simpl.onnx (https://github.com/Hanner123/train-radioml.git)' -> 'model_brevitas_1_simpl.onnx'
+# ERROR: unexpected error - [Errno 2] No storage files available: 'outputs/radioml/model_brevitas_1_simpl.onnx'                       
+
+# Having any troubles? Hit us up at https://dvc.org/support, we are always happy to help!
+# (venv) hanna@ceg-420:~/git/Empty$ 
+
+
+
+# fp 32 power durchschnittlichen verbrauch abziehen - unterschiedliche darstellungen, falls 0 nicht mitzählen
+
+# int 8 modell debuggen mit onnxpasses
+
+# onnxsim
+

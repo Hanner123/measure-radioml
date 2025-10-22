@@ -495,7 +495,15 @@ if __name__ == "__main__":
         tegrastats_logs.append((tegrastats_log, batch_size))
 
     parse_tegrastats_to_json.parse_tegrastats(tegrastats_logs)
-    power_averages.power_averages(batch_sizes)
+
+    base_path = Path(__file__).resolve().parent.parent / "outputs" / "radioml" /"energy_metrics"
+    energy_consumption_file = base_path / "energy_consumption.json" 
+    power_averages_file = base_path / "power_averages.json"
+    power_averages_file_baseline = base_path / "power_averages_baseline.json"
+
+    power_averages.power_averages(batch_sizes, power_averages_file, energy_consumption_file)
+    power_averages.power_averages_bbaseline(batch_sizes, power_averages_file_baseline, energy_consumption_file)
+    
     
 
 

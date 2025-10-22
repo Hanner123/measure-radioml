@@ -1,6 +1,12 @@
 # List experiment stages, i.e., the jobs to be run
 stages:
   # eval läuft nicht mit torch 2.6.0
+  # import_models:
+  #   wdir: ..
+  #   cmd: FP16=0 python radioml/import_models.py
+  #   outs:
+  #     - inputs/radioml/model_brevitas_1_simpl.onnx
+  #     - inputs/radioml/model_brevitas_1.onnx
   measure_32FP:
     wdir: ..
     cmd: FP16=0 python radioml/measure.py
@@ -140,6 +146,11 @@ stages:
           cache: false
      - outputs/radioml/energy_metrics/power_averages.json:
           template: plot_templates/power_averages.json
+          x: batch_size
+          y: value
+          cache: false
+     - outputs/radioml/energy_metrics/power_averages_baseline.json:
+          template: plot_templates/power_averages_baseline.json
           x: batch_size
           y: value
           cache: false

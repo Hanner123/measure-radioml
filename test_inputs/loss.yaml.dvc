@@ -1,0 +1,12 @@
+md5: 6956c77fffa20f44142b989eeee5d214
+frozen: true
+deps:
+- path: outputs/radioml/loss.yaml
+  repo:
+    url: https://github.com/Hanner123/train-radioml.git
+    rev_lock: 82409a9464d18b30f1c3021d10e051f0683f674f
+outs:
+- md5: e5f5ff76cba416b5f7ee3f5e2d203b01
+  size: 1633
+  hash: md5
+  path: loss.yaml

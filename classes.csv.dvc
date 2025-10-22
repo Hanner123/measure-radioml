@@ -1,0 +1,12 @@
+md5: ade943bababd5e64a5df5978802e3c3d
+frozen: true
+deps:
+- path: outputs/radioml/classes.csv
+  repo:
+    url: https://github.com/Hanner123/train-radioml.git
+    rev_lock: 6bcd49bb167072918dc4c5ef8fbe60fbde1070c5
+outs:
+- md5: b157ccaefbe4441742440b40e6cbdaa1
+  size: 1450393
+  hash: md5
+  path: classes.csv

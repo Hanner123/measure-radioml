@@ -830,8 +830,8 @@ stages:
       size: 629
     - path: radioml/measure.py
       hash: md5
-      md5: cd0355b1415917e20201a69fe46756fd
-      size: 24462
+      md5: 9628a7dcdedf88ff4df890aa02edd2db
+      size: 24515
     params:
       radioml/params.yaml:
         batch_sizes:
@@ -853,20 +853,20 @@ stages:
       size: 56
     - path: outputs/radioml/throughput/INT8/latency_results.json
       hash: md5
-      md5: 6e40557bd64769bece910305b4d49256
-      size: 3580
+      md5: d9ef3003965ca8e48f9d4ab4413bad46
+      size: 3579
     - path: outputs/radioml/throughput/INT8/latency_results_batch.json
       hash: md5
-      md5: e0bd032168882b067f98622931ddcd40
-      size: 3536
+      md5: 6e904132cd4015c77a7d82d638a4f8af
+      size: 3539
     - path: outputs/radioml/throughput/INT8/throughput_results.json
       hash: md5
-      md5: 4a9b1edaa402413e5ca6056387357687
-      size: 1620
+      md5: 50630b21ccffc5606e17bbc162549636
+      size: 1627
     - path: outputs/radioml/throughput/INT8/throughput_results_2.json
       hash: md5
-      md5: 4a9b1edaa402413e5ca6056387357687
-      size: 1620
+      md5: 50630b21ccffc5606e17bbc162549636
+      size: 1627
   quantize_tensorrt_INT8:
     cmd: python radioml/quantize_tensorrt.py
     deps:
