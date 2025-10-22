@@ -502,7 +502,7 @@ if __name__ == "__main__":
     power_averages_file_baseline = base_path / "power_averages_baseline.json"
 
     power_averages.power_averages(batch_sizes, power_averages_file, energy_consumption_file)
-    power_averages.power_averages_bbaseline(batch_sizes, power_averages_file_baseline, energy_consumption_file)
+    power_averages.power_averages_baseline(batch_sizes, power_averages_file_baseline, energy_consumption_file)
     
     
 

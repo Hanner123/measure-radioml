@@ -5,6 +5,7 @@ def power_averages(batch_sizes, power_averages_file, energy_consumption_file):
     import json
     from datetime import datetime
     from pathlib import Path
+    base_path = Path(__file__).resolve().parent.parent / "outputs" / "radioml" /"energy_metrics"
 
     
 
@@ -84,6 +85,7 @@ def power_averages_baseline(batch_sizes, power_averages_file, energy_consumption
     import json
     from datetime import datetime
     from pathlib import Path
+    base_path = Path(__file__).resolve().parent.parent / "outputs" / "radioml" /"energy_metrics"
 
     power_averages = []
 
