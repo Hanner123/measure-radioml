@@ -1,19 +1,36 @@
 {
-    "$schema": "https://vega.github.io/schema/vega-lite/v4.json",
-    "title": "Latency (Sec) vs Throughput (sample/Sec)",
-    "description": "Bar plot showing throughput vs batch size.",
-    "data": {"values": "<DVC_METRIC_DATA>"},
-    "mark": "bar",
-    "encoding": {
-      "x": {
-        "field": "latency_total",
-        "type": "quantitative",
-        "title": "Latency (Sec)"
-      },
-      "y": {
-        "field": "throughput_images_per_s",
-        "type": "quantitative",
-        "title": "Throughput (sample/Sec)"
+  "$schema": "https://vega.github.io/schema/vega-lite/v4.json",
+  "title": "Latency (Sec) vs Throughput (sample/Sec)",
+  "description": "Bar plot showing throughput vs batch size.",
+  "data": { "values": "<DVC_METRIC_DATA>" },
+  "layer": [
+    {
+      "mark": "bar",
+      "encoding": {
+        "x": {
+          "field": "latency_total",
+          "type": "quantitative",
+          "title": "Latency (Sec)"
+        },
+        "y": {
+          "field": "throughput_images_per_s",
+          "type": "quantitative",
+          "title": "Throughput (sample/Sec)"
+        },
+        "tooltip": [
+          { "field": "batch_size", "type": "nominal", "title": "Batch" },
+          { "field": "latency_total", "type": "quantitative" },
+          { "field": "throughput_images_per_s", "type": "quantitative" }
+        ]
+      }
+    },
+    {
+      "mark": { "type": "text", "align": "left", "dx": 6, "dy": -2, "fontSize": 11 },
+      "encoding": {
+        "x": { "field": "latency_total", "type": "quantitative" },
+        "y": { "field": "throughput_images_per_s", "type": "quantitative" },
+        "text": { "field": "batch_size", "type": "nominal" }
       }
     }
-  }
+  ]
+}
