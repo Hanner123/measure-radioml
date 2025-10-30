@@ -6,8 +6,8 @@
     "mark": "bar",
     "encoding": {
       "x": {
-        "field": "batch_size",
-        "type": "ordinal",
+        "field": "latency_total",
+        "type": "quantitative",
         "title": "Batch Size"
       },
       "y": {
