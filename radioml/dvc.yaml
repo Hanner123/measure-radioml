@@ -37,6 +37,20 @@ stages:
          x: batch_size
          y: value
          cache: false
+  plot_32FP:
+    wdir: ..
+    cmd: python radioml/latency_throughput_log.py
+    deps:
+      - radioml/latency_throughput_log.py
+      - outputs/radioml/throughput/FP32/latency_results_batch.json
+      - outputs/radioml/throughput/FP32/throughput_results.json
+    plots:
+      - outputs/radioml/throughput/FP32/latency_throughput.json:
+          template: plot_templates/latency_throughput.json
+          x: latency_total
+          y: throughput_images_per_s
+          cache: false
+
   measure_16FP:
     wdir: ..
     cmd: FP16=1 python radioml/measure.py

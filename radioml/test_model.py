@@ -9,17 +9,27 @@ print("available providers:", ort.get_available_providers())
 
 
 model_path = "/home/hanna/git/measure-radioml/inputs/radioml/model_dynamic_batchsize.onnx"
-model_path = "/home/hanna/git/measure-radioml/inputs/radioml/model_brevitas_1_simpl.onnx"
+model = "/home/hanna/git/measure-radioml/inputs/radioml/model_brevitas_1_simpl.onnx"
 #model_path = "/home/hanna/git/measure-radioml/inputs/radioml/model_brevitas_1.onnx"
 data_path = "/home/hanna/git/radioml-transformer/data/GOLD_XYZ_OSC.0001_1024.npz"
 
 
+# sess_options = ort.SessionOptions()
+# sess_options.intra_op_num_threads = 1
+# session = ort.InferenceSession(model_path, sess_options, providers=['CPUExecutionProvider'])
+# input_name = session.get_inputs()[0].name
+# output_name = session.get_outputs()[0].name
+
 sess_options = ort.SessionOptions()
-sess_options.intra_op_num_threads = 1
-session = ort.InferenceSession(model_path, sess_options, providers=['CPUExecutionProvider'])
+# Das ist sehr wichtig!!!
+sess_options.graph_optimization_level = (
+    ort.GraphOptimizationLevel.ORT_DISABLE_ALL
+)
+sess_options.log_severity_level = 3
+session = ort.InferenceSession(model, sess_options, providers=['CPUExecutionProvider'])
+
 input_name = session.get_inputs()[0].name
 output_name = session.get_outputs()[0].name
-
 
 data = np.load(data_path)
 X = data["X"] 
@@ -43,6 +53,8 @@ for idx in indices:
 
     # Prediction Label (argmax)
     pred_label = np.argmax(pred_onnx, axis=1)[0]
+    print(pred_onnx)
+
     print("pred label:", pred_label, "true label:", y_label)
 
     # print(f"Prediction: [{pred_label}]  Ground Truth: [{y_label}]")

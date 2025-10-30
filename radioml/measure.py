@@ -561,7 +561,7 @@ if __name__ == "__main__":
 
     batch_size = 1
     accuracy = run_accuracy_eval(batch_size, input_info, output_info, RADIOML_PATH_NPZ, onnx_model_path)
-    print(f"!!!Accuracy : {accuracy:.2%}")
+    print(f"Accuracy : {accuracy:.2%}")
 
     if FP16:
         accuracy_path = Path(__file__).resolve().parent.parent / "outputs" / "radioml" / "eval_results" /"accuracy_FP16.json"
@@ -610,9 +610,6 @@ if __name__ == "__main__":
     # daten vorher vorverarbeiten, dann als npz speichern fertig, komisch: immer eine dimension zu viel, mit 1, Lösung: unsqueeze/ein mal expand weniger
     # , dann nochmal testen fertig
 # bei int 8 ist die accuracy auch schlechter -> aber mir onnxruntime ist sie gut (60%)
-# Pipeline bauen: soll sich der jetson dann automatisch das neue Modell ziehen und die tests durchführen und pushen?
-
-
 
 
 
@@ -629,15 +626,22 @@ if __name__ == "__main__":
 # (venv) hanna@ceg-420:~/git/Empty$ dvc import https://github.com/Hanner123/train-radioml.git outputs/radioml/model_brevitas_1_simpl.onnx
 # Importing 'outputs/radioml/model_brevitas_1_simpl.onnx (https://github.com/Hanner123/train-radioml.git)' -> 'model_brevitas_1_simpl.onnx'
 # ERROR: unexpected error - [Errno 2] No storage files available: 'outputs/radioml/model_brevitas_1_simpl.onnx'                       
-
 # Having any troubles? Hit us up at https://dvc.org/support, we are always happy to help!
-# (venv) hanna@ceg-420:~/git/Empty$ 
 
 
+# fp 32 power durchschnittlichen verbrauch abziehen - unterschiedliche darstellungen
+# falls 0 nicht mitzählen -> passt, da es die einträge nicht gibt (es gibt keien 0 Einträge)
 
-# fp 32 power durchschnittlichen verbrauch abziehen - unterschiedliche darstellungen, falls 0 nicht mitzählen
+
+# Todo:
 
 # int 8 modell debuggen mit onnxpasses
+
+#  Das ist sehr wichtig!!!
+# sess_options.graph_optimization_level = (
+#     ort.GraphOptimizationLevel.ORT_DISABLE_ALL
+# )
+# wenn man das beim jetson bei der inferenz mit onnxruntime einfügt, dann ist die accuracy genauso wie beim PC!
 
 # onnxsim
 

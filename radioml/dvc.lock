@@ -452,8 +452,8 @@ stages:
       size: 87734
     - path: radioml/measure.py
       hash: md5
-      md5: cd0355b1415917e20201a69fe46756fd
-      size: 24462
+      md5: 3f9af39758dc3f7c6ab80845001482cf
+      size: 26757
     params:
       radioml/params.yaml:
         batch_sizes:
@@ -471,20 +471,20 @@ stages:
     outs:
     - path: outputs/radioml/throughput/FP32/latency_results.json
       hash: md5
-      md5: a640eaba80a54973604c7091f6a86d4a
+      md5: f8ec6be3d52891c13eeff0436965d778
       size: 3578
     - path: outputs/radioml/throughput/FP32/latency_results_batch.json
       hash: md5
-      md5: e173702b004f528a6fa198f3daa59051
-      size: 3532
+      md5: c6e1b5caf42f24a88ddf4356a25b45dc
+      size: 3531
     - path: outputs/radioml/throughput/FP32/throughput_results.json
       hash: md5
-      md5: 0e47bafa242e06bec8cade1caf5c8198
-      size: 1626
+      md5: 766b4b2b3c9d4b27081bf062f894a9a7
+      size: 1630
     - path: outputs/radioml/throughput/FP32/throughput_results_2.json
       hash: md5
-      md5: 0e47bafa242e06bec8cade1caf5c8198
-      size: 1626
+      md5: 766b4b2b3c9d4b27081bf062f894a9a7
+      size: 1630
   measure_16FP:
     cmd: FP16=1 python radioml/measure.py
     deps:
@@ -1097,3 +1097,23 @@ stages:
       hash: md5
       md5: 21d38d970c341be2ac1cb55a7758443b
       size: 67697
+  plot_32FP:
+    cmd: python radioml/latency_throughput_log.py
+    deps:
+    - path: outputs/radioml/throughput/FP32/latency_results_batch.json
+      hash: md5
+      md5: c6e1b5caf42f24a88ddf4356a25b45dc
+      size: 3531
+    - path: outputs/radioml/throughput/FP32/throughput_results.json
+      hash: md5
+      md5: 766b4b2b3c9d4b27081bf062f894a9a7
+      size: 1630
+    - path: radioml/latency_throughput_log.py
+      hash: md5
+      md5: 65f432aef8e2ea9b7213c9b3fc18def0
+      size: 1385
+    outs:
+    - path: outputs/radioml/throughput/FP32/latency_throughput.json
+      hash: md5
+      md5: 107a1999d5e0f9a75e1133651493958e
+      size: 1332
