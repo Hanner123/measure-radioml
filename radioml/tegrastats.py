@@ -21,6 +21,7 @@ import subprocess
 import parse_tegrastats_to_json
 import power_averages
 from datetime import datetime
+from radioml.throughput_power import power_throughput
 # import sys
 # sys.path.append(os.path.abspath(os.path.join(os.path.dirname(__file__), '..')))
 # tensorrt, datasets(hugging face), pycuda
@@ -506,7 +507,11 @@ if __name__ == "__main__":
     power_averages.power_averages_baseline(batch_sizes, power_averages_file_baseline, energy_consumption_file)
     power_averages.power_averages_difference(batch_sizes, power_averages_file , power_averages_file_baseline, power_averages_difference_file)
     
-    
+    power_throughput_path = "/home/hanna/git/measure-radioml/outputs/radioml/throughput/FP32/power_throughput.json"
+    throughput_path = "/home/hanna/git/measure-radioml/outputs/radioml/throughput/FP32/throughput_results.json"
+    power_path = "/home/hanna/git/measure-radioml/outputs/radioml/energy_metrics/power_averages.json"
+
+    power_throughput(power_path, throughput_path, power_throughput_path)
 
 
     # erster wert: current

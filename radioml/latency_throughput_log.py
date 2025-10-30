@@ -10,7 +10,7 @@ def load_json(p):
     with open(p, "r") as f:
         return json.load(f)
 
-def main():
+def latency_throughput(LATENCY_PATH, THROUGHPUT_PATH, OUT_PATH):
     lat = load_json(LATENCY_PATH)
     thr = load_json(THROUGHPUT_PATH)
 
@@ -35,7 +35,7 @@ def main():
     OUT_PATH.parent.mkdir(parents=True, exist_ok=True)
     with open(OUT_PATH, "w") as f:
         json.dump(summary, f, indent=2)
-    print("Wrot", OUT_PATH, "entries:", len(summary))
+    print("Wrote", OUT_PATH, "entries:", len(summary))
 
 if __name__ == "__main__":
-    main()
+    latency_throughput(LATENCY_PATH, THROUGHPUT_PATH, OUT_PATH)

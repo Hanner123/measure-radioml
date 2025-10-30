@@ -13,6 +13,7 @@ stages:
     deps:
       - inputs/radioml/model_dynamic_batchsize.onnx
       - radioml/measure.py
+      - radioml/latency_throughput_log.py
     params:
       - radioml/params.yaml:
           - batch_sizes
@@ -37,14 +38,6 @@ stages:
          x: batch_size
          y: value
          cache: false
-  plot_32FP:
-    wdir: ..
-    cmd: python radioml/latency_throughput_log.py
-    deps:
-      - radioml/latency_throughput_log.py
-      - outputs/radioml/throughput/FP32/latency_results_batch.json
-      - outputs/radioml/throughput/FP32/throughput_results.json
-    plots:
      - outputs/radioml/throughput/FP32/latency_throughput.json:
          template: plot_templates/latency_throughput_FP32.json
          x: latency_total
@@ -56,6 +49,7 @@ stages:
     deps:
       - inputs/radioml/model_dynamic_batchsize.onnx
       - radioml/measure.py
+      - radioml/latency_throughput_log.py
     params:
       - radioml/params.yaml:
           - batch_sizes
@@ -80,6 +74,11 @@ stages:
          x: batch_size
          y: value
          cache: false
+     - outputs/radioml/throughput/FP16/latency_throughput.json:
+         template: plot_templates/latency_throughput_FP16.json
+         x: latency_total
+         y: throughput_images_per_s
+         cache: false
   measure_INT8_brevitas:
     wdir: ..
     cmd: INT8=1 python radioml/measure.py
@@ -89,6 +88,7 @@ stages:
       - plot_templates/bar_2_INT8.json
       - plot_templates/bar_3_INT8.json
       - plot_templates/bar_4_INT8.json
+      - radioml/latency_throughput_log.py
     params:
       - radioml/params.yaml:
           - batch_sizes
@@ -114,6 +114,11 @@ stages:
          template: plot_templates/bar_4_INT8.json
          x: batch_size
          y: value
+         cache: false
+     - outputs/radioml/throughput/INT8/latency_throughput.json:
+         template: plot_templates/latency_throughput_INT8.json
+         x: latency_total
+         y: throughput_images_per_s
          cache: false
   accuracy_comparison:
     wdir: ..
@@ -171,4 +176,9 @@ stages:
           template: plot_templates/power_averages_difference.json
           x: batch_size
           y: value
+          cache: false
+     - outputs/radioml/throughput/FP32/power_throughput.json:
+          template: plot_templates/throughput_per_power_FP32.json
+          x: batch_size
+          y: throughput_per_power
           cache: false

@@ -17,6 +17,7 @@ from onnxconverter_common import float16 # zu requirements hinzufügen
 import onnxruntime as ort
 import dvc.api
 import model
+from radioml.latency_throughput_log import latency_throughput
 
 # import sys
 # sys.path.append(os.path.abspath(os.path.join(os.path.dirname(__file__), '..')))
@@ -588,20 +589,25 @@ if __name__ == "__main__":
         throughput_results2 = Path(__file__).resolve().parent.parent / "outputs" / "radioml" / "throughput" / "FP16"/ "throughput_results_2.json"
         latency_results = Path(__file__).resolve().parent.parent / "outputs" / "radioml" / "throughput" / "FP16"/ "latency_results.json"
         latency_results_batch = Path(__file__).resolve().parent.parent / "outputs" / "radioml" / "throughput" / "FP16"/ "latency_results_batch.json"
+        latency_throughput_path = Path(__file__).resolve().parent.parent / "outputs" / "radioml" / "throughput" / "FP16"/ "latency_throughput.json"
     elif INT8:
         throughput_results = Path(__file__).resolve().parent.parent / "outputs" / "radioml" / "throughput" / "INT8" / "throughput_results.json"
         throughput_results2 = Path(__file__).resolve().parent.parent / "outputs" / "radioml" / "throughput" / "INT8"/ "throughput_results_2.json"
         latency_results = Path(__file__).resolve().parent.parent / "outputs" / "radioml" / "throughput" / "INT8"/ "latency_results.json"
         latency_results_batch = Path(__file__).resolve().parent.parent / "outputs" / "radioml" / "throughput" / "INT8"/ "latency_results_batch.json"
+        latency_throughput_path = Path(__file__).resolve().parent.parent / "outputs" / "radioml" / "throughput" / "INT8"/ "latency_throughput.json"
     else:
         throughput_results = Path(__file__).resolve().parent.parent / "outputs" / "radioml" / "throughput" / "FP32"/ "throughput_results.json"
         throughput_results2 = Path(__file__).resolve().parent.parent / "outputs" / "radioml" / "throughput" / "FP32"/ "throughput_results_2.json"
         latency_results = Path(__file__).resolve().parent.parent / "outputs" / "radioml" / "throughput" / "FP32"/ "latency_results.json"
         latency_results_batch = Path(__file__).resolve().parent.parent / "outputs" / "radioml" / "throughput" / "FP32"/ "latency_results_batch.json"
+        latency_throughput_path = Path(__file__).resolve().parent.parent / "outputs" / "radioml" / "throughput" / "FP32"/ "latency_throughput.json"
     save_json(throughput_log, throughput_results)
     save_json(throughput_log, throughput_results2)
     save_json(latency_log, latency_results)
     save_json(latency_log_batch, latency_results_batch)
+
+    latency_throughput(latency_results_batch, throughput_results, latency_throughput_path)
 
 
 

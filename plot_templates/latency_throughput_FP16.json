@@ -1,7 +1,7 @@
 {
   "$schema": "https://vega.github.io/schema/vega-lite/v4.json",
-  "title": "Latency (Sec) vs Throughput (sample/Sec) FP32",
-  "description": "FP32 Latency vs Throughput ",
+  "title": "Latency (Sec) vs Throughput (sample/Sec) FP16",
+  "description": "FP16 Latency vs Throughput ",
   "data": { "values": "<DVC_METRIC_DATA>" },
   "layer": [
     {
