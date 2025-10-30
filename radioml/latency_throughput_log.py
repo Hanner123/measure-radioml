@@ -2,7 +2,7 @@ import json
 from pathlib import Path
 from collections import defaultdict
 
-LATENCY_PATH = Path("/home/hanna/git/measure-radioml/outputs/radioml/throughput/FP32/latency_results_batch.json")       # passe Pfade an
+LATENCY_PATH = Path("/home/hanna/git/measure-radioml/outputs/radioml/throughput/FP32/latency_results_batch.json")     
 THROUGHPUT_PATH = Path("/home/hanna/git/measure-radioml/outputs/radioml/throughput/FP32/throughput_results.json")
 OUT_PATH = Path("/home/hanna/git/measure-radioml/outputs/radioml/throughput/FP32/latency_throughput.json")
 
@@ -35,7 +35,7 @@ def main():
     OUT_PATH.parent.mkdir(parents=True, exist_ok=True)
     with open(OUT_PATH, "w") as f:
         json.dump(summary, f, indent=2)
-    print("Wrote", OUT_PATH, "entries:", len(summary))
+    print("Wrot", OUT_PATH, "entries:", len(summary))
 
 if __name__ == "__main__":
     main()
