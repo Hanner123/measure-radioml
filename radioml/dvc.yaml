@@ -47,7 +47,7 @@ stages:
     plots:
      - outputs/radioml/throughput/FP32/latency_throughput.json:
          template: plot_templates/latency_throughput_FP32.json
-         x: latency_total
+         x: batch_size
          y: throughput_images_per_s
          cache: false
   measure_16FP:
