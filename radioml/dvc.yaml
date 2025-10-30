@@ -46,11 +46,10 @@ stages:
       - outputs/radioml/throughput/FP32/throughput_results.json
     plots:
       - outputs/radioml/throughput/FP32/latency_throughput.json:
-          template: plot_templates/latency_throughput.json
+          template: plot_templates/latency_throughput_FP32.json
           x: latency_total
           y: throughput_images_per_s
           cache: false
-
   measure_16FP:
     wdir: ..
     cmd: FP16=1 python radioml/measure.py
