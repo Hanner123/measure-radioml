@@ -1,12 +1,10 @@
-def power_averages(batch_sizes, power_averages_file, energy_consumption_file, start_end_time_file):
+def power_averages(batch_sizes, power_averages_file, energy_consumption_file, quant_type):
     # input logs besteht aus tegrastats_log, batch_size tuples
     # in jedem eintrag der output dateien soll als zusätzlicher key der batch_size wert stehen
     import re
     import json
     from datetime import datetime
     from pathlib import Path
-    base_path = Path(__file__).resolve().parent.parent / "outputs" / "radioml" /"energy_metrics"
-
     
 
     power_averages = []
@@ -15,6 +13,7 @@ def power_averages(batch_sizes, power_averages_file, energy_consumption_file, st
             energy_consumption = json.load(f)
 
     for batch_size in batch_sizes:
+        start_end_time_file = Path(__file__).resolve().parent.parent / "outputs" / "radioml" /"energy_metrics" / quant_type / f"timestamps_{batch_size}.json"
         with open(start_end_time_file, "r") as f:
             timestamps = json.load(f)
         start_iso = timestamps["start_time"]
@@ -43,6 +42,9 @@ def power_averages(batch_sizes, power_averages_file, energy_consumption_file, st
                 vin_sys += entry["value"]
                 count_vin_sys += 1
 
+        if count_vdd_gpu==0 or count_vdd_cpu==0 or count_vin_sys==0:
+            print(f"⚠️ Warnung: Keine Daten für batch_size {batch_size} gefunden.")
+
         vdd_gpu_avg = vdd_gpu/count_vdd_gpu if count_vdd_gpu > 0 else 0
         vdd_cpu_avg = vdd_cpu/count_vdd_cpu if count_vdd_cpu > 0 else 0
         vin_sys_avg = vin_sys/count_vin_sys if count_vin_sys > 0 else 0
@@ -70,14 +72,13 @@ def power_averages(batch_sizes, power_averages_file, energy_consumption_file, st
 
 
 
-def power_averages_baseline(batch_sizes, power_averages_file, energy_consumption_file, start_end_time_file):
+def power_averages_baseline(batch_sizes, power_averages_file, energy_consumption_file, quant_type):
     # input logs besteht aus tegrastats_log, batch_size tuples
     # in jedem eintrag der output dateien soll als zusätzlicher key der batch_size wert stehen
     import re
     import json
     from datetime import datetime
     from pathlib import Path
-    base_path = Path(__file__).resolve().parent.parent / "outputs" / "radioml" /"energy_metrics"
 
     power_averages = []
 
@@ -85,7 +86,7 @@ def power_averages_baseline(batch_sizes, power_averages_file, energy_consumption
             energy_consumption = json.load(f)
 
     for batch_size in batch_sizes:
-
+        start_end_time_file = Path(__file__).resolve().parent.parent / "outputs" / "radioml" /"energy_metrics" / quant_type / f"timestamps_{batch_size}.json"
         with open(start_end_time_file, "r") as f:
             timestamps = json.load(f)
         start_iso = timestamps["start_time"]
@@ -114,6 +115,7 @@ def power_averages_baseline(batch_sizes, power_averages_file, energy_consumption
                 vin_sys += entry["value"]
                 count_vin_sys += 1
 
+        
         vdd_gpu_avg = vdd_gpu/count_vdd_gpu if count_vdd_gpu > 0 else 0
         vdd_cpu_avg = vdd_cpu/count_vdd_cpu if count_vdd_cpu > 0 else 0
         vin_sys_avg = vin_sys/count_vin_sys if count_vin_sys > 0 else 0
@@ -139,13 +141,12 @@ def power_averages_baseline(batch_sizes, power_averages_file, energy_consumption
 
     print(f"{len(power_averages)} Einträge in '{power_averages_file.name}' gespeichert (Durchschnittswerte).")
 
-def power_averages_difference(batch_sizes, power_averages_file, power_averages_baseline_file, power_difference_file, start_end_time_file):
+def power_averages_difference(batch_sizes, power_averages_file, power_averages_baseline_file, power_difference_file, quant_type):
     # input logs besteht aus tegrastats_log, batch_size tuples
     import re
     import json
     from datetime import datetime
     from pathlib import Path
-    base_path = Path(__file__).resolve().parent.parent / "outputs" / "radioml" /"energy_metrics"
     # in jedem eintrag der output dateien soll als zusätzlicher key der batch_size wert stehen
         # JSON-Dateien einlesen
     with open(power_averages_file, 'r') as f:
@@ -169,6 +170,7 @@ def power_averages_difference(batch_sizes, power_averages_file, power_averages_b
 
         # Nur berechnen, wenn batch_size in der gewünschten Liste ist
         if batch_size in batch_sizes:
+            start_end_time_file = Path(__file__).resolve().parent.parent / "outputs" / "radioml" /"energy_metrics" / quant_type / f"timestamps_{batch_size}.json"
             baseline_value = baseline_dict.get((batch_size, type_))
 
             if baseline_value is not None:
@@ -201,7 +203,7 @@ if __name__ == "__main__":
 
 
     batch_sizes = [1, 2, 4, 8, 16, 32, 64, 128, 256, 512, 1024]
-    difference_baseline_inference(batch_sizes, power_averages_file, power_averages_baseline_file, power_difference_file, start_end_time_file)
+    difference_baseline_inference(batch_sizes, power_averages_file, power_averages_baseline_file, power_difference_file)
 
 
     # power_averages(batch_sizes, power_averages_file, energy_consumption_file)

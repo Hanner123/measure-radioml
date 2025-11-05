@@ -1068,12 +1068,12 @@ stages:
       size: 6910
     - path: radioml/power_averages.py
       hash: md5
-      md5: a9018fef9bfde27b5010f6f1dcc55259
-      size: 8022
+      md5: d276cdf39ac5a73bec95e00f675981f0
+      size: 8327
     - path: radioml/tegrastats.py
       hash: md5
-      md5: dc25894e0ae48d196da4b37785b4e5e1
-      size: 17990
+      md5: 33247b639038303dfd01b33a09faacc8
+      size: 17935
     params:
       radioml/params.yaml:
         batch_sizes:
@@ -1091,40 +1091,40 @@ stages:
     outs:
     - path: outputs/radioml/energy_metrics/FP32/energy_consumption.json
       hash: md5
-      md5: 5825aec45f09305e6504496f4d44f3f2
-      size: 23372
+      md5: 5cf12f9b797e415f5b1aee07c0848cd3
+      size: 23754
     - path: outputs/radioml/energy_metrics/FP32/energy_consumption_2.json
       hash: md5
-      md5: 5825aec45f09305e6504496f4d44f3f2
-      size: 23372
+      md5: 5cf12f9b797e415f5b1aee07c0848cd3
+      size: 23754
     - path: outputs/radioml/energy_metrics/FP32/energy_metrics.json
       hash: md5
-      md5: c60cc5d89e38c194fe9471baed28d233
-      size: 30594
+      md5: a9fe142ab2ef4929b0a994679e7b3e02
+      size: 31190
     - path: outputs/radioml/energy_metrics/FP32/power_averages.json
       hash: md5
-      md5: 69ac72c4963d5d4bdd21c4d5dce8871c
-      size: 463
+      md5: 257b448f9dcad156dacb1190cae2ee57
+      size: 522
     - path: outputs/radioml/energy_metrics/FP32/power_averages_baseline.json
       hash: md5
-      md5: 2a47810ef0b9a3dbf8948863487b3862
-      size: 515
+      md5: af3c291479079495636f92626dbefd18
+      size: 478
     - path: outputs/radioml/energy_metrics/FP32/power_averages_difference.json
       hash: md5
-      md5: e30d9bf63247b5dee3af2c935516de80
-      size: 541
+      md5: c496d0ce7ed7d2c38e190c0e4b294ee7
+      size: 534
     - path: outputs/radioml/energy_metrics/FP32/ram_metrics.json
       hash: md5
-      md5: 8906ac019a6333d061ccb0eb84ec5f77
-      size: 7469
+      md5: 78082ea34201a0e18de84a09ef6fb26e
+      size: 7590
     - path: outputs/radioml/energy_metrics/FP32/ram_metrics_2.json
       hash: md5
-      md5: 8906ac019a6333d061ccb0eb84ec5f77
-      size: 7469
+      md5: 78082ea34201a0e18de84a09ef6fb26e
+      size: 7590
     - path: outputs/radioml/throughput/FP32/power_throughput.json
       hash: md5
-      md5: 65203570875c89c7b93ed1b5baa46aca
-      size: 1551
+      md5: 272c1c728adfb1e864c60cc1108788b6
+      size: 1589
   plot_32FP:
     cmd: python radioml/latency_throughput_log.py
     deps:
@@ -1154,12 +1154,12 @@ stages:
       size: 6910
     - path: radioml/power_averages.py
       hash: md5
-      md5: a9018fef9bfde27b5010f6f1dcc55259
-      size: 8022
+      md5: d276cdf39ac5a73bec95e00f675981f0
+      size: 8327
     - path: radioml/tegrastats.py
       hash: md5
-      md5: dc25894e0ae48d196da4b37785b4e5e1
-      size: 17990
+      md5: 33247b639038303dfd01b33a09faacc8
+      size: 17935
     params:
       radioml/params.yaml:
         batch_sizes:
@@ -1177,25 +1177,25 @@ stages:
     outs:
     - path: outputs/radioml/energy_metrics/FP16/energy_consumption.json
       hash: md5
-      md5: 6d14133e21a1bcbf527ac742cae6cc62
-      size: 22455
+      md5: 57239f6d9f513d1504ec6f6f6f341f86
+      size: 22840
     - path: outputs/radioml/energy_metrics/FP16/energy_consumption_2.json
       hash: md5
-      md5: 6d14133e21a1bcbf527ac742cae6cc62
-      size: 22455
+      md5: 57239f6d9f513d1504ec6f6f6f341f86
+      size: 22840
     - path: outputs/radioml/energy_metrics/FP16/energy_metrics.json
       hash: md5
-      md5: cb2d87c3178a9d25912afe9cf0ff733b
-      size: 29398
+      md5: d9be88975b27c9f347fc3efbf60ce038
+      size: 30024
     - path: outputs/radioml/energy_metrics/FP16/power_averages.json
       hash: md5
-      md5: cfb350fcda48b31b849568a325fb6e5b
-      size: 463
+      md5: b449272301cd099a878af211f2ea8535
+      size: 486
     - path: outputs/radioml/energy_metrics/FP16/ram_metrics_2.json
       hash: md5
-      md5: 25d7284f706fce9918ed2efde82d86c8
-      size: 7176
+      md5: f4a59cee6d3e091ab6b25ad287710184
+      size: 7298
     - path: outputs/radioml/throughput/FP16/power_throughput.json
       hash: md5
-      md5: cdad1b17e62c8691f0ebcbae9a7a0324
-      size: 1553
+      md5: a6c46ec3e8b3551ab0e3a3308ceaae9c
+      size: 1581

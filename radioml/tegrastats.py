@@ -480,7 +480,7 @@ if __name__ == "__main__":
     batch_sizes = params["batch_sizes"]
 
     # batch_sizes = [1, 2, 4, 8, 16, 32, 64, 128, 256, 512, 1024]
-    batch_sizes = [512, 1024]
+    batch_sizes = [256, 512]
 
 
     onnx_model_path = "inputs/radioml/model_dynamic_batchsize.onnx"
@@ -518,9 +518,9 @@ if __name__ == "__main__":
     power_averages_file_baseline = base_path / "power_averages_baseline.json"
     power_averages_difference_file = base_path / "power_averages_difference.json"
 
-    power_averages.power_averages(batch_sizes, power_averages_file, energy_consumption_file, timestamps)
-    power_averages.power_averages_baseline(batch_sizes, power_averages_file_baseline, energy_consumption_file, timestamps)
-    power_averages.power_averages_difference(batch_sizes, power_averages_file , power_averages_file_baseline, power_averages_difference_file, timestamps)
+    power_averages.power_averages(batch_sizes, power_averages_file, energy_consumption_file, quant_type)
+    power_averages.power_averages_baseline(batch_sizes, power_averages_file_baseline, energy_consumption_file, quant_type)
+    power_averages.power_averages_difference(batch_sizes, power_averages_file , power_averages_file_baseline, power_averages_difference_file, quant_type)
 
     power_throughput_path = f"/home/hanna/git/measure-radioml/outputs/radioml/throughput/{quant_type}/power_throughput.json"
     throughput_path = f"/home/hanna/git/measure-radioml/outputs/radioml/throughput/{quant_type}/throughput_results.json"
@@ -528,6 +528,5 @@ if __name__ == "__main__":
 
     throughput_power.power_throughput(power_path, throughput_path, power_throughput_path)
 
-    # für FP32 und FP16 testen
-    # auch int8 testen
+
 
