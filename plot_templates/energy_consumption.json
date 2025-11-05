@@ -1,12 +1,12 @@
 {
   "$schema": "https://vega.github.io/schema/vega-lite/v5.json",
-  "title": "Energy Consumption Over Time (mW)",
+  "title": "Energy Consumption (mW) FP32",
   "data": {
     "values": "<DVC_METRIC_DATA>"
   },
   "transform": [
     {
-      "filter": "datum.batch_size === 1024"
+      "filter": "datum.batch_size === 512"
     }
   ],
   "layer": [

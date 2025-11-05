@@ -5,7 +5,7 @@
   "data": {"values": "<DVC_METRIC_DATA>"},
   "transform": [
     {
-      "filter": "datum.batch_size === 1"
+      "filter": "datum.batch_size === 512"
     }
   ],
   "mark": "line",
