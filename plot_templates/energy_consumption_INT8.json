@@ -1,0 +1,57 @@
+{
+  "$schema": "https://vega.github.io/schema/vega-lite/v5.json",
+  "title": "Energy Consumption (mW) INT8",
+  "data": {
+    "values": "<DVC_METRIC_DATA>"
+  },
+  "transform": [
+    {
+      "filter": "datum.batch_size === 512"
+    }
+  ],
+  "layer": [
+    {
+      "mark": "bar",
+      "encoding": {
+        "x": {
+          "field": "timestamp",
+          "type": "temporal",
+          "title": "Timestamp"
+        },
+        "y": {
+          "aggregate": "sum",
+          "field": "value",
+          "type": "quantitative",
+          "title": "Power (mW)"
+        },
+        "color": {
+          "field": "type",
+          "type": "nominal",
+          "scale": {
+            "domain": ["vdd_gpu_soc_current", "vdd_cpu_cv_current", "vin_sys_5v0_current"],
+            "range": ["#1f77b4", "#ff7f0e", "#2ca02c"]
+          },
+          "title": "Energy Source"
+        }
+      }
+    },
+    {
+      "transform": [
+      {
+        "filter": "datum.bar_start_end === true"
+      }
+    ],
+      "mark": {
+        "type": "rule",
+        "color": "black",
+        "size": 2
+      },
+      "encoding": {
+        "x": {
+          "field": "timestamp",
+          "type": "temporal"
+        }
+      }
+    }
+  ]
+}

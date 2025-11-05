@@ -49,15 +49,15 @@
   },
   {
     "batch_size": 256,
-    "power_total": 7782.666666666668,
+    "power_total": 7716.0,
     "throughput_images_per_s": 10877.013455619997,
-    "throughput_per_power": 1.397594670501113
+    "throughput_per_power": 1.4096699657361325
   },
   {
     "batch_size": 512,
-    "power_total": 7919.333333333334,
+    "power_total": 7703.5714285714275,
     "throughput_images_per_s": 11227.397505291743,
-    "throughput_per_power": 1.4177200318156085
+    "throughput_per_power": 1.4574275852951732
   },
   {
     "batch_size": 1024,

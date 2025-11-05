@@ -497,7 +497,7 @@ if __name__ == "__main__":
         base_path = Path(__file__).resolve().parent.parent / "outputs" / "radioml" /"energy_metrics" / "FP32"
         quant_type = "FP32"
 
-    print("Base path:", base_path)
+    print("Path: ", base_path)
 
     for batch_size in batch_sizes:
         if INT8:
@@ -511,7 +511,6 @@ if __name__ == "__main__":
         tegrastats_logs.append((tegrastats_log, batch_size))
 
     parse_tegrastats_to_json.parse_tegrastats(tegrastats_logs, base_path)
-
     
     energy_consumption_file = base_path / "energy_consumption.json" 
     power_averages_file = base_path / "power_averages.json"
