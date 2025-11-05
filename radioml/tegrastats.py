@@ -511,7 +511,7 @@ if __name__ == "__main__":
     throughput_path = "/home/hanna/git/measure-radioml/outputs/radioml/throughput/FP32/throughput_results.json"
     power_path = "/home/hanna/git/measure-radioml/outputs/radioml/energy_metrics/power_averages.json"
 
-    power_throughput(power_path, throughput_path, power_throughput_path)
+    throughput_power.power_throughput(power_path, throughput_path, power_throughput_path)
 
 
     # erster wert: current
