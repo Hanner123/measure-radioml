@@ -2,99 +2,99 @@
   {
     "batch_size": 1,
     "type": "vdd_gpu_avg",
-    "value": 0
+    "value": 2098.9
   },
   {
     "batch_size": 1,
     "type": "vdd_cpu_avg",
-    "value": 0
+    "value": 399.0
   },
   {
     "batch_size": 1,
     "type": "vin_sys_avg",
-    "value": 0
+    "value": 2486.4
   },
   {
     "batch_size": 2,
-    "type": "vdd_gpu_avg",
-    "value": 0
-  },
-  {
-    "batch_size": 2,
-    "type": "vdd_cpu_avg",
-    "value": 0
-  },
-  {
-    "batch_size": 2,
-    "type": "vin_sys_avg",
-    "value": 0
-  },
-  {
-    "batch_size": 4,
-    "type": "vdd_gpu_avg",
-    "value": 2056.0714285714284
-  },
-  {
-    "batch_size": 4,
-    "type": "vdd_cpu_avg",
-    "value": 399.0
-  },
-  {
-    "batch_size": 4,
-    "type": "vin_sys_avg",
-    "value": 2561.8571428571427
-  },
-  {
-    "batch_size": 8,
-    "type": "vdd_gpu_avg",
-    "value": 2098.5
-  },
-  {
-    "batch_size": 8,
-    "type": "vdd_cpu_avg",
-    "value": 399.0
-  },
-  {
-    "batch_size": 8,
-    "type": "vin_sys_avg",
-    "value": 2481.45
-  },
-  {
-    "batch_size": 16,
-    "type": "vdd_gpu_avg",
-    "value": 2113.0
-  },
-  {
-    "batch_size": 16,
-    "type": "vdd_cpu_avg",
-    "value": 399.0
-  },
-  {
-    "batch_size": 16,
-    "type": "vin_sys_avg",
-    "value": 2482.8571428571427
-  },
-  {
-    "batch_size": 32,
-    "type": "vdd_gpu_avg",
-    "value": 2061.6315789473683
-  },
-  {
-    "batch_size": 32,
-    "type": "vdd_cpu_avg",
-    "value": 399.0
-  },
-  {
-    "batch_size": 32,
-    "type": "vin_sys_avg",
-    "value": 2442.7894736842104
-  },
-  {
-    "batch_size": 64,
     "type": "vdd_gpu_avg",
     "value": 2098.95
   },
   {
+    "batch_size": 2,
+    "type": "vdd_cpu_avg",
+    "value": 399.0
+  },
+  {
+    "batch_size": 2,
+    "type": "vin_sys_avg",
+    "value": 2466.35
+  },
+  {
+    "batch_size": 4,
+    "type": "vdd_gpu_avg",
+    "value": 2061.7368421052633
+  },
+  {
+    "batch_size": 4,
+    "type": "vdd_cpu_avg",
+    "value": 399.0
+  },
+  {
+    "batch_size": 4,
+    "type": "vin_sys_avg",
+    "value": 2458.7368421052633
+  },
+  {
+    "batch_size": 8,
+    "type": "vdd_gpu_avg",
+    "value": 2118.85
+  },
+  {
+    "batch_size": 8,
+    "type": "vdd_cpu_avg",
+    "value": 399.0
+  },
+  {
+    "batch_size": 8,
+    "type": "vin_sys_avg",
+    "value": 2481.35
+  },
+  {
+    "batch_size": 16,
+    "type": "vdd_gpu_avg",
+    "value": 2058.85
+  },
+  {
+    "batch_size": 16,
+    "type": "vdd_cpu_avg",
+    "value": 399.0
+  },
+  {
+    "batch_size": 16,
+    "type": "vin_sys_avg",
+    "value": 2456.3
+  },
+  {
+    "batch_size": 32,
+    "type": "vdd_gpu_avg",
+    "value": 2098.55
+  },
+  {
+    "batch_size": 32,
+    "type": "vdd_cpu_avg",
+    "value": 399.0
+  },
+  {
+    "batch_size": 32,
+    "type": "vin_sys_avg",
+    "value": 2461.35
+  },
+  {
+    "batch_size": 64,
+    "type": "vdd_gpu_avg",
+    "value": 2061.4736842105262
+  },
+  {
     "batch_size": 64,
     "type": "vdd_cpu_avg",
     "value": 399.0
@@ -102,27 +102,27 @@
   {
     "batch_size": 64,
     "type": "vin_sys_avg",
-    "value": 2491.5
+    "value": 2453.3684210526317
   },
   {
     "batch_size": 128,
     "type": "vdd_gpu_avg",
-    "value": 2151.190476190476
+    "value": 2118.9
   },
   {
     "batch_size": 128,
     "type": "vdd_cpu_avg",
-    "value": 418.04761904761904
+    "value": 399.0
   },
   {
     "batch_size": 128,
     "type": "vin_sys_avg",
-    "value": 2525.8571428571427
+    "value": 2486.45
   },
   {
     "batch_size": 256,
     "type": "vdd_gpu_avg",
-    "value": 2118.95
+    "value": 2151.285714285714
   },
   {
     "batch_size": 256,
@@ -132,12 +132,12 @@
   {
     "batch_size": 256,
     "type": "vin_sys_avg",
-    "value": 2466.3
+    "value": 2492.4285714285716
   },
   {
     "batch_size": 512,
     "type": "vdd_gpu_avg",
-    "value": 2062.157894736842
+    "value": 2082.842105263158
   },
   {
     "batch_size": 512,
@@ -147,12 +147,12 @@
   {
     "batch_size": 512,
     "type": "vin_sys_avg",
-    "value": 2453.315789473684
+    "value": 2463.9473684210525
   },
   {
     "batch_size": 1024,
     "type": "vdd_gpu_avg",
-    "value": 2150.904761904762
+    "value": 2118.9
   },
   {
     "batch_size": 1024,
@@ -162,6 +162,6 @@
   {
     "batch_size": 1024,
     "type": "vin_sys_avg",
-    "value": 2506.714285714286
+    "value": 2481.35
   }
 ]

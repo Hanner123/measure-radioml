@@ -21,7 +21,7 @@ import subprocess
 import parse_tegrastats_to_json
 import power_averages
 from datetime import datetime
-from radioml.throughput_power import power_throughput
+import throughput_power
 # import sys
 # sys.path.append(os.path.abspath(os.path.join(os.path.dirname(__file__), '..')))
 # tensorrt, datasets(hugging face), pycuda

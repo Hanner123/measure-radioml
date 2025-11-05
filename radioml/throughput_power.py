@@ -11,6 +11,8 @@ def load_json(p):
         return json.load(f)
 
 def power_throughput(POWER_PATH, THROUGHPUT_PATH, OUT_PATH):
+    OUT_PATH = Path(OUT_PATH)
+    
     power = load_json(POWER_PATH)
     thr = load_json(THROUGHPUT_PATH)
 
