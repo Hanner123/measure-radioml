@@ -2,7 +2,7 @@ import json
 from pathlib import Path
 from collections import defaultdict
 
-POWER_PATH = Path("/home/hanna/git/measure-radioml/outputs/radioml/energy_metrics/power_averages.json")     # pfad noch verbessern (unterordner quantisierung)
+POWER_PATH = Path("/home/hanna/git/measure-radioml/outputs/radioml/energy_metrics/FP32/power_averages.json")    
 THROUGHPUT_PATH = Path("/home/hanna/git/measure-radioml/outputs/radioml/throughput/FP32/throughput_results.json")
 OUT_PATH = Path("/home/hanna/git/measure-radioml/outputs/radioml/throughput/FP32/power_throughput.json")
 
@@ -12,7 +12,7 @@ def load_json(p):
 
 def power_throughput(POWER_PATH, THROUGHPUT_PATH, OUT_PATH):
     OUT_PATH = Path(OUT_PATH)
-    
+
     power = load_json(POWER_PATH)
     thr = load_json(THROUGHPUT_PATH)
 

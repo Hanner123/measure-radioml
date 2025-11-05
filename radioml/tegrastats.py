@@ -477,7 +477,8 @@ if __name__ == "__main__":
 
     batch_sizes = params["batch_sizes"]
 
-    batch_sizes = [1, 2, 4, 8, 16, 32, 64, 128, 256, 512, 1024]
+    # batch_sizes = [1, 2, 4, 8, 16, 32, 64, 128, 256, 512, 1024]
+    batch_sizes = [1024]
 
 
     onnx_model_path = "inputs/radioml/model_dynamic_batchsize.onnx"
@@ -488,8 +489,8 @@ if __name__ == "__main__":
         if INT8:
             onnx_model_path = f"inputs/radioml/model_brevitas_{batch_size}_simpl.onnx"
         input_info, output_info = get_model_io_info(onnx_model_path)
-        tegrastats_log = Path(__file__).resolve().parent.parent / "outputs" / "radioml" / "energy_metrics" / f"tegrastats_{batch_size}.log"
-        timestamps = Path(__file__).resolve().parent.parent / "outputs" / "radioml" / "energy_metrics" / f"timestamps_{batch_size}.json"
+        tegrastats_log = Path(__file__).resolve().parent.parent / "outputs" / "radioml" / "energy_metrics" / "FP32" / f"tegrastats_{batch_size}.log"
+        timestamps = Path(__file__).resolve().parent.parent / "outputs" / "radioml" / "energy_metrics" / "FP32" / f"timestamps_{batch_size}.json"
         accuracy = run_accuracy_eval(batch_size, input_info, output_info, RADIOML_PATH_NPZ, onnx_model_path, tegrastats_log, timestamps)
         print(f"Accuracy for batch size {batch_size}: {accuracy:.4f}")
 
@@ -497,7 +498,7 @@ if __name__ == "__main__":
 
     parse_tegrastats_to_json.parse_tegrastats(tegrastats_logs)
 
-    base_path = Path(__file__).resolve().parent.parent / "outputs" / "radioml" /"energy_metrics"
+    base_path = Path(__file__).resolve().parent.parent / "outputs" / "radioml" /"energy_metrics" / "FP32"
     energy_consumption_file = base_path / "energy_consumption.json" 
     power_averages_file = base_path / "power_averages.json"
     power_averages_file_baseline = base_path / "power_averages_baseline.json"
@@ -509,12 +510,19 @@ if __name__ == "__main__":
     
     power_throughput_path = "/home/hanna/git/measure-radioml/outputs/radioml/throughput/FP32/power_throughput.json"
     throughput_path = "/home/hanna/git/measure-radioml/outputs/radioml/throughput/FP32/throughput_results.json"
-    power_path = "/home/hanna/git/measure-radioml/outputs/radioml/energy_metrics/power_averages.json"
+    power_path = "/home/hanna/git/measure-radioml/outputs/radioml/energy_metrics/FP32/power_averages.json"
 
     throughput_power.power_throughput(power_path, throughput_path, power_throughput_path)
 
 
-    # erster wert: current
-    # /
-    # zweiter wert: average
+    # Filesystem umstellen - unterordner FP32
+    # im tegrastats anpassen #
+    # imparse tegrastats anpassen #
+    # in throughput_power anpassen #
+    # in template anpassen #
+    # im yaml anpassen
+
+
+    # für FP32 und FP16 testen
+    # auch int8 testen
 

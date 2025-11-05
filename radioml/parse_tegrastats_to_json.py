@@ -6,7 +6,7 @@ def parse_tegrastats(input_logs):
     from datetime import datetime
     from pathlib import Path
 
-    base_path = Path(__file__).resolve().parent.parent / "outputs" / "radioml" /"energy_metrics"
+    base_path = Path(__file__).resolve().parent.parent / "outputs" / "radioml" /"energy_metrics" / "FP32"
     input_log = base_path / f"tegrastats.log"
     output_json_full = base_path /"energy_metrics.json"
     output_json_simple = base_path / "ram_metrics.json"
@@ -87,7 +87,7 @@ def parse_tegrastats(input_logs):
 
 
                     # aus json auslesen
-                    timestamps_file = Path(__file__).resolve().parent.parent / "outputs" / "radioml" / "energy_metrics" / f"timestamps_{batch_size}.json"
+                    timestamps_file = Path(__file__).resolve().parent.parent / "outputs" / "radioml" / "energy_metrics" / "FP32" / f"timestamps_{batch_size}.json"
                     with open(timestamps_file, "r") as f:
                         timestamps = json.load(f)
                     start_iso = timestamps["start_time"]

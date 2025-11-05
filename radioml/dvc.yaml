@@ -148,31 +148,31 @@ stages:
       - radioml/params.yaml:
           - batch_sizes
     outs:
-      - outputs/radioml/energy_metrics/energy_metrics.json
-      - outputs/radioml/energy_metrics/ram_metrics_2.json
-      - outputs/radioml/energy_metrics/energy_consumption_2.json
+      - outputs/radioml/energy_metrics/FP32/energy_metrics.json
+      - outputs/radioml/energy_metrics/FP32/ram_metrics_2.json
+      - outputs/radioml/energy_metrics/FP32/energy_consumption_2.json
     plots:
-     -  outputs/radioml/energy_metrics/ram_metrics.json:
+     -  outputs/radioml/energy_metrics/FP32/ram_metrics.json:
           template: plot_templates/ram_used.json
           x: timestamp
           y: ram_used
           cache: false
-     -  outputs/radioml/energy_metrics/energy_consumption.json:
+     -  outputs/radioml/energy_metrics/FP32/energy_consumption.json:
           template: plot_templates/energy_consumption.json
           x: timestamp
           y: value
           cache: false
-     - outputs/radioml/energy_metrics/power_averages.json:
+     - outputs/radioml/energy_metrics/FP32/power_averages.json:
           template: plot_templates/power_averages.json
           x: batch_size
           y: value
           cache: false
-     - outputs/radioml/energy_metrics/power_averages_baseline.json:
+     - outputs/radioml/energy_metrics/FP32/power_averages_baseline.json:
           template: plot_templates/power_averages_baseline.json
           x: batch_size
           y: value
           cache: false
-     - outputs/radioml/energy_metrics/power_averages_difference.json:
+     - outputs/radioml/energy_metrics/FP32/power_averages_difference.json:
           template: plot_templates/power_averages_difference.json
           x: batch_size
           y: value
