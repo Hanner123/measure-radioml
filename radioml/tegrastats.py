@@ -25,6 +25,8 @@ import throughput_power
 # import sys
 # sys.path.append(os.path.abspath(os.path.join(os.path.dirname(__file__), '..')))
 # tensorrt, datasets(hugging face), pycuda
+
+
 FP16 = os.environ.get("FP16", "0") == "1"
 INT8 = os.environ.get("INT8", "0") == "1"
 
@@ -478,50 +480,53 @@ if __name__ == "__main__":
     batch_sizes = params["batch_sizes"]
 
     # batch_sizes = [1, 2, 4, 8, 16, 32, 64, 128, 256, 512, 1024]
-    batch_sizes = [1024]
+    batch_sizes = [512, 1024]
 
 
     onnx_model_path = "inputs/radioml/model_dynamic_batchsize.onnx"
 
     tegrastats_logs = []
 
+    if FP16:
+        base_path = Path(__file__).resolve().parent.parent / "outputs" / "radioml" /"energy_metrics" / "FP16"
+        quant_type = "FP16"
+    elif INT8:
+        base_path = Path(__file__).resolve().parent.parent / "outputs" / "radioml" /"energy_metrics" / "INT8"
+        quant_type = "INT8"
+    else:
+        base_path = Path(__file__).resolve().parent.parent / "outputs" / "radioml" /"energy_metrics" / "FP32"
+        quant_type = "FP32"
+
+    print("Base path:", base_path)
+
     for batch_size in batch_sizes:
         if INT8:
             onnx_model_path = f"inputs/radioml/model_brevitas_{batch_size}_simpl.onnx"
         input_info, output_info = get_model_io_info(onnx_model_path)
-        tegrastats_log = Path(__file__).resolve().parent.parent / "outputs" / "radioml" / "energy_metrics" / "FP32" / f"tegrastats_{batch_size}.log"
-        timestamps = Path(__file__).resolve().parent.parent / "outputs" / "radioml" / "energy_metrics" / "FP32" / f"timestamps_{batch_size}.json"
+        tegrastats_log = base_path / f"tegrastats_{batch_size}.log"
+        timestamps = base_path / f"timestamps_{batch_size}.json"
         accuracy = run_accuracy_eval(batch_size, input_info, output_info, RADIOML_PATH_NPZ, onnx_model_path, tegrastats_log, timestamps)
         print(f"Accuracy for batch size {batch_size}: {accuracy:.4f}")
 
         tegrastats_logs.append((tegrastats_log, batch_size))
 
-    parse_tegrastats_to_json.parse_tegrastats(tegrastats_logs)
+    parse_tegrastats_to_json.parse_tegrastats(tegrastats_logs, base_path)
 
-    base_path = Path(__file__).resolve().parent.parent / "outputs" / "radioml" /"energy_metrics" / "FP32"
+    
     energy_consumption_file = base_path / "energy_consumption.json" 
     power_averages_file = base_path / "power_averages.json"
     power_averages_file_baseline = base_path / "power_averages_baseline.json"
     power_averages_difference_file = base_path / "power_averages_difference.json"
 
-    power_averages.power_averages(batch_sizes, power_averages_file, energy_consumption_file)
-    power_averages.power_averages_baseline(batch_sizes, power_averages_file_baseline, energy_consumption_file)
-    power_averages.power_averages_difference(batch_sizes, power_averages_file , power_averages_file_baseline, power_averages_difference_file)
-    
-    power_throughput_path = "/home/hanna/git/measure-radioml/outputs/radioml/throughput/FP32/power_throughput.json"
-    throughput_path = "/home/hanna/git/measure-radioml/outputs/radioml/throughput/FP32/throughput_results.json"
-    power_path = "/home/hanna/git/measure-radioml/outputs/radioml/energy_metrics/FP32/power_averages.json"
+    power_averages.power_averages(batch_sizes, power_averages_file, energy_consumption_file, timestamps)
+    power_averages.power_averages_baseline(batch_sizes, power_averages_file_baseline, energy_consumption_file, timestamps)
+    power_averages.power_averages_difference(batch_sizes, power_averages_file , power_averages_file_baseline, power_averages_difference_file, timestamps)
+
+    power_throughput_path = f"/home/hanna/git/measure-radioml/outputs/radioml/throughput/{quant_type}/power_throughput.json"
+    throughput_path = f"/home/hanna/git/measure-radioml/outputs/radioml/throughput/{quant_type}/throughput_results.json"
+    power_path = base_path / "power_averages.json"
 
     throughput_power.power_throughput(power_path, throughput_path, power_throughput_path)
-
-
-    # Filesystem umstellen - unterordner FP32
-    # im tegrastats anpassen #
-    # imparse tegrastats anpassen #
-    # in throughput_power anpassen #
-    # in template anpassen #
-    # im yaml anpassen
-
 
     # für FP32 und FP16 testen
     # auch int8 testen

@@ -2,67 +2,67 @@
   {
     "batch_size": 1,
     "power_total": null,
-    "throughput_images_per_s": 804.7589286210189,
+    "throughput_images_per_s": 818.0274659354942,
     "throughput_per_power": null
   },
   {
     "batch_size": 2,
     "power_total": null,
-    "throughput_images_per_s": 1512.8896670158774,
+    "throughput_images_per_s": 1556.433018218171,
     "throughput_per_power": null
   },
   {
     "batch_size": 4,
     "power_total": null,
-    "throughput_images_per_s": 2846.2264192302546,
+    "throughput_images_per_s": 2986.6944304253016,
     "throughput_per_power": null
   },
   {
     "batch_size": 8,
     "power_total": null,
-    "throughput_images_per_s": 5223.754785542491,
+    "throughput_images_per_s": 5457.901853338953,
     "throughput_per_power": null
   },
   {
     "batch_size": 16,
     "power_total": null,
-    "throughput_images_per_s": 7444.295927194933,
+    "throughput_images_per_s": 8709.01090697617,
     "throughput_per_power": null
   },
   {
     "batch_size": 32,
     "power_total": null,
-    "throughput_images_per_s": 6774.870045034175,
+    "throughput_images_per_s": 11640.737079772727,
     "throughput_per_power": null
   },
   {
     "batch_size": 64,
     "power_total": null,
-    "throughput_images_per_s": 8930.657270366333,
+    "throughput_images_per_s": 13910.270862957716,
     "throughput_per_power": null
   },
   {
     "batch_size": 128,
     "power_total": null,
-    "throughput_images_per_s": 10555.98342815663,
+    "throughput_images_per_s": 14132.548991053078,
     "throughput_per_power": null
   },
   {
     "batch_size": 256,
     "power_total": null,
-    "throughput_images_per_s": 10877.013455619997,
+    "throughput_images_per_s": 13801.647073434606,
     "throughput_per_power": null
   },
   {
     "batch_size": 512,
     "power_total": 0.0,
-    "throughput_images_per_s": 11227.397505291743,
+    "throughput_images_per_s": 14292.448334770908,
     "throughput_per_power": null
   },
   {
     "batch_size": 1024,
-    "power_total": 8321.2,
-    "throughput_images_per_s": 12775.35142448484,
-    "throughput_per_power": 1.5352775350291832
+    "power_total": 7696.8,
+    "throughput_images_per_s": 16317.491616902867,
+    "throughput_per_power": 2.1200358092847504
   }
 ]

@@ -1,4 +1,4 @@
-def power_averages(batch_sizes, power_averages_file, energy_consumption_file):
+def power_averages(batch_sizes, power_averages_file, energy_consumption_file, start_end_time_file):
     # input logs besteht aus tegrastats_log, batch_size tuples
     # in jedem eintrag der output dateien soll als zusätzlicher key der batch_size wert stehen
     import re
@@ -15,14 +15,6 @@ def power_averages(batch_sizes, power_averages_file, energy_consumption_file):
             energy_consumption = json.load(f)
 
     for batch_size in batch_sizes:
-
-
-
-        # begin with entry after start time
-        # end with entry before end time
-
-        # read start and endtime from files:
-        start_end_time_file = base_path / f"timestamps_{batch_size}.json"
         with open(start_end_time_file, "r") as f:
             timestamps = json.load(f)
         start_iso = timestamps["start_time"]
@@ -78,7 +70,7 @@ def power_averages(batch_sizes, power_averages_file, energy_consumption_file):
 
 
 
-def power_averages_baseline(batch_sizes, power_averages_file, energy_consumption_file):
+def power_averages_baseline(batch_sizes, power_averages_file, energy_consumption_file, start_end_time_file):
     # input logs besteht aus tegrastats_log, batch_size tuples
     # in jedem eintrag der output dateien soll als zusätzlicher key der batch_size wert stehen
     import re
@@ -94,13 +86,6 @@ def power_averages_baseline(batch_sizes, power_averages_file, energy_consumption
 
     for batch_size in batch_sizes:
 
-
-
-        # anfang aufzeichnung - start time
-        # end time - ende aufzeichnung
-
-        # read start and endtime from files:
-        start_end_time_file = base_path / f"timestamps_{batch_size}.json"
         with open(start_end_time_file, "r") as f:
             timestamps = json.load(f)
         start_iso = timestamps["start_time"]
@@ -154,7 +139,7 @@ def power_averages_baseline(batch_sizes, power_averages_file, energy_consumption
 
     print(f"{len(power_averages)} Einträge in '{power_averages_file.name}' gespeichert (Durchschnittswerte).")
 
-def power_averages_difference(batch_sizes, power_averages_file, power_averages_baseline_file, power_difference_file):
+def power_averages_difference(batch_sizes, power_averages_file, power_averages_baseline_file, power_difference_file, start_end_time_file):
     # input logs besteht aus tegrastats_log, batch_size tuples
     import re
     import json
@@ -216,7 +201,7 @@ if __name__ == "__main__":
 
 
     batch_sizes = [1, 2, 4, 8, 16, 32, 64, 128, 256, 512, 1024]
-    difference_baseline_inference(batch_sizes, power_averages_file, power_averages_baseline_file, power_difference_file)
+    difference_baseline_inference(batch_sizes, power_averages_file, power_averages_baseline_file, power_difference_file, start_end_time_file)
 
 
     # power_averages(batch_sizes, power_averages_file, energy_consumption_file)

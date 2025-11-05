@@ -1,0 +1,19 @@
+{
+    "$schema": "https://vega.github.io/schema/vega-lite/v4.json",
+    "title": "FP32 Throughput per power = sample per energy",
+    "description": "Bar plot showing throughput vs batch size.",
+    "data": {"values": "<DVC_METRIC_DATA>"},
+    "mark": "bar",
+    "encoding": {
+      "x": {
+        "field": "batch_size",
+        "type": "ordinal",
+        "title": "Batch Size"
+      },
+      "y": {
+        "field": "throughput_per_power",
+        "type": "quantitative",
+        "title": "Throughput per Power (sample/Joule)"
+      }
+    }
+  }
